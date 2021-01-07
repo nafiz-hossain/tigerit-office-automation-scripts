@@ -23,28 +23,23 @@ Welcome to the TigerIT Office Automation Scripts repository! This repository con
 
 tigerit-office-automation-scripts/
 │
-├── bash_scripts/
-│ ├── automate_time_tracking.sh
-│ ├── commit_message_extractor.sh
-│ ├── desktop_app_deploy.sh
-│ ├── desktop_app_version_data.json
-│ ├── format_lastweektask.sh
-│ ├── freeCodeCamp_javascript.sh
-│ ├── monitor_mouse_location.sh
-│ ├── restart_mouse_driver.sh
-│ └── text_search_simulation.sh
-│ └── ...
-│
-└── python_scripts/
-├── mqtt_scripts/
-│ ├── script1.py
-│ ├── script2.py
-│ └── ...
-│
-└── selenium_pyautogui_scripts/
-├── script1.py
-├── script2.py
-└── ...
+├── bash_scripts
+│   ├── automate_time_tracking.sh
+│   ├── commit_message_extractor.sh
+│   ├── desktop_app_deploy.sh
+│   ├── desktop_app_version_data.json
+│   ├── format_lastweektask.sh
+│   ├── freeCodeCamp_javascript.sh
+│   ├── monitor_mouse_location.sh
+│   ├── README.md
+│   ├── restart_mouse_driver.sh
+│   └── text_search_simulation.sh
+├── python_scripts
+│   ├── find_duplicacy_over_payloads.py
+│   ├── openai_sentence_rephraser.py
+│   ├── README.md
+│   └── task_creation_automation.py
+└── README.md
 
 
 
