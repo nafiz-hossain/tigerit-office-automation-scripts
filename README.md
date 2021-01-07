@@ -1,31 +1,71 @@
-# Bash Scripts Repository
-##### This repository contains a collection of Bash scripts that I have created for various purposes. The scripts are intended to automate repetitive tasks, enhance productivity, and simplify daily operations.
+# TigerIT Office Automation Scripts
+
+Welcome to the TigerIT Office Automation Scripts repository! This repository contains a collection of Bash and Python scripts aimed at automating various tasks within the TigerIT office environment. The scripts cover a range of functionalities including MQTT communication, web automation using Selenium, and desktop automation with PyAutoGUI.
+
+## Table of Contents
+
+- [Features](#features)
+- [Folder Structure](#folder-structure)
+- [Usage](#usage)
+- [Dependencies](#dependencies)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+- **Bash Scripts:** Collection of Bash scripts for automating tasks within the TigerIT office environment.
+- **Python Scripts:**
+  - **MQTT Scripts:** Scripts utilizing the Paho MQTT library for communication.
+  - **Selenium and PyAutoGUI Scripts:** Scripts automating web and desktop tasks using Selenium and PyAutoGUI.
+
+## Folder Structure
 
 
-## Contents
-The repository includes the following Bash scripts:
+tigerit-office-automation-scripts/
+│
+├── bash_scripts/
+│ ├── automate_time_tracking.sh
+│ ├── commit_message_extractor.sh
+│ ├── desktop_app_deploy.sh
+│ ├── desktop_app_version_data.json
+│ ├── format_lastweektask.sh
+│ ├── freeCodeCamp_javascript.sh
+│ ├── monitor_mouse_location.sh
+│ ├── restart_mouse_driver.sh
+│ └── text_search_simulation.sh
+│ └── ...
+│
+└── python_scripts/
+├── mqtt_scripts/
+│ ├── script1.py
+│ ├── script2.py
+│ └── ...
+│
+└── selenium_pyautogui_scripts/
+├── script1.py
+├── script2.py
+└── ...
 
-- DesktopUpdateCheckV3: This json is uploaded here to test whether the new update prompt will be properly received by the user after the desktop update.
-- desktop.sh: A script to take build in different branch, for both commchat and agent app based on environment
-- freeCodeCamp_javascript.sh: A script that will take the successfull code push into git repository
-- getmousepointer.sh: A one line necessary command to monitor mouse location
-- lastweektask.sh: A script to search for the task performed last week in a specific repository and format as user wants.
-- reformatlastweektask.sh: A script that will reformat last week and remove redandunt info.
-- timetracker.sh: A script that will take current task info and put all the information into timetracker system at tigerit for running hour.
-- versionCheck.sh: A script that will check current branch app version number and returns for test purpose.
-- restartInput.sh: A script that will restart both display and mouspad driver for ubuntu 22.04.2
+
 
 ## Usage
-To use any of the scripts in this repository, simply download the script to your local machine and make it executable using the 'chmod' command. Then, execute the script using the terminal. Before executing any script, be sure to review the script code to ensure that it will perform the desired action.
 
-```sh
-sudo chmod +x filename.sh
-./filename.sh
-```
+- Clone this repository:
+git clone https://github.com/your-username/tigerit-office-automation-scripts.git
+
+
+- Navigate to the desired script directory (e.g., `bash_scripts` or `python_scripts`).
+
+- Execute the desired script using the appropriate interpreter (e.g., `bash script1.sh` or `python script1.py`).
+
+## Dependencies
+
+- Ensure you have the necessary dependencies installed for each script. Refer to the documentation within each script for specific requirements.
+
+## Contributing
+
+Contributions are welcome! If you have improvements, bug fixes, or new scripts to contribute, feel free to submit a pull request. Please ensure your code follows the repository's style and guidelines.
+
 ## License
-All scripts in this repository are provided under the MIT License. Please feel free to use, modify, and distribute these scripts as needed.
 
-## Contributions
-If you find a bug or have a suggestion for improvement, please feel free to create an issue or pull request. Contributions are always welcome!
-
-To know more about commchat - https://commchat.com/
+This project is licensed under the [MIT License](LICENSE.txt). Feel free to use, modify, and distribute the code for personal or commercial purposes.
