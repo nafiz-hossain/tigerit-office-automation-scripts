@@ -21,9 +21,10 @@ Welcome to the TigerIT Office Automation Scripts repository! This repository con
 ## Folder Structure
 
 
+```
 tigerit-office-automation-scripts/
 │
-├── bash_scripts
+├── **bash_scripts/**
 │   ├── automate_time_tracking.sh
 │   ├── commit_message_extractor.sh
 │   ├── desktop_app_deploy.sh
@@ -34,12 +35,15 @@ tigerit-office-automation-scripts/
 │   ├── README.md
 │   ├── restart_mouse_driver.sh
 │   └── text_search_simulation.sh
-├── python_scripts
+│
+├── **python_scripts/**
 │   ├── find_duplicacy_over_payloads.py
 │   ├── openai_sentence_rephraser.py
 │   ├── README.md
 │   └── task_creation_automation.py
-└── README.md
+│
+└── **README.md**
+```
 
 
 
