@@ -19,7 +19,7 @@
 	fi
 	d=$(date "+%d%b%H%M")
 	Appversion="$version-$branch$environment$d"
-	#Appversion="$version-$performanceJuly10$environment$d"  #for branch contains /
+	#Appversion="$version-$performanceJuly12$environment$d"  #for branch contains /
 	#d=$(date +%Y-%m-%d)
         #echo " current date is $d"
 
