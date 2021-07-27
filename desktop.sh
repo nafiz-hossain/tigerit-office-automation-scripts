@@ -18,6 +18,12 @@
 	echo ""
 	fi
 	d=$(date "+%d%b%H%M")
+	
+	#shortening branch name 
+	if [[ ${#branch} -gt 6 ]] ; then
+	    branch="${branch:0:6}"
+	fi
+
 	Appversion="$version-$branch$environment$d"
 	#Appversion="$version-$performanceJuly12$environment$d"  #for branch contains /
 	#d=$(date +%Y-%m-%d)
