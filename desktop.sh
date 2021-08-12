@@ -1,16 +1,29 @@
 #!/bin/bash
-	#saved the file at root, changed permission (chmod +x file.sh)
+mob="0"
+#saved the file at root, changed permission (chmod +x file.sh)
 	cd TigerIT/projects/communicator-desktop-pwa/ #directory
 
 	clear
 	read -p "branch name : " branch
-	echo ""
+	#echo ""
 	read -p "environment  : loc/prod? " environment
-	echo ""
+	#echo ""
 	read -p "version  : " version
-	echo ""
+	#echo ""
 	read -p "Do you want to install npm  : y/n " isnpm
+	read -p "Mobile num? t-teletalk, g-gp, o-other  : " ismbl
 	echo ""
+
+	if [[ "$ismbl" == "t" ]]; then
+		mob="1521412351"	
+	elif [[ "$ismbl" == "g" ]]; then
+		mob=
+"1745937990"
+	elif [[ "$ismbl" == "o" ]]; then
+		read -p "Put number  : " mob
+	fi
+	echo ""
+	echo "number hocche $mob"
 	if [ $isnpm = y ]
 		then npm i
 	echo "npm i"
@@ -56,9 +69,76 @@
 	echo ""
 	echo "<<<------------------------ -----building the app------ -------------------------->>>"	
 	#build command for specific OS, here is for linux
-	ionic cap sync electron
+	#ionic cap sync electron
 	npm run electron:build-linux
 	cd dist/
 	sudo snap remove commchatbeta
 	sudo snap install --dangerous commchatbeta_${Appversion}_amd64.snap
-	commchatbeta 
+	#commchatbeta 
+	sleep 5
+	#registration automate --- local env ---
+	if [[ $environment = "loc" ]];
+		then 
+		sleep 1
+		sudo killall commchatbeta
+		sleep 1
+		xdotool key Super_L
+		sleep 1
+		xdotool type commchat
+		sleep 1
+		xdotool key Return
+		sleep 17
+		xdotool key Return
+		sleep 3
+		xdotool mousemove 630 273 click 1
+		xdotool type $mob
+		sleep .5
+		xdotool key Return
+		sleep .5
+		xdotool key Return
+		sleep 4
+		xdotool mousemove 537 302 click 1
+		sleep 2
+		xdotool type 223311
+		sleep 8
+		xdotool key Return
+		sleep 2
+		xdotool key Return
+		sleep 2
+		xdotool key Return
+		sleep 2
+		xdotool key Return
+	#registration automate --- Prod env ---
+	elif [[ $environment = "prod" ]]
+		then 
+		sleep 1
+		sudo killall commchatbeta
+		sleep 1
+		xdotool key Super_L
+		sleep 1
+		xdotool type commchat
+		sleep 1
+		xdotool key Return
+		sleep 17
+		xdotool key Return
+		sleep 3
+		xdotool mousemove 630 273 click 1
+		xdotool type $mob
+		sleep .5
+		xdotool key Return
+		sleep .5
+		xdotool key Return
+		sleep 4
+		xdotool mousemove 537 302 click 1
+		sleep 2
+		#xdotool type 223311
+		#sleep 8
+		#xdotool key Return
+		#sleep 2
+		#xdotool key Return
+		#sleep 2
+		#xdotool key Return
+		#sleep 2
+		#xdotool key Return
+	fi
+
