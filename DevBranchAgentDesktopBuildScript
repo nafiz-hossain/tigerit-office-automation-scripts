@@ -1,4 +1,7 @@
-cd ~/TigerIT/projects/communicator-desktop-pwa/electron/
+cd ~/TigerIT/projects/communicator-desktop-pwa/
+npm i
+cd electron/
+npm i
 git reset --hard
 git checkout dev
 git pull origin dev
@@ -24,4 +27,4 @@ done < package.json
 #End of Reading version from package.json
 
 cd dist/
-sudo snap install --dangerous commchat-agent_${SUBSTRING}_amd64.snap
+sudo snap install --dangerous CommChatSetup-Agent_${SUBSTRING}.snap
