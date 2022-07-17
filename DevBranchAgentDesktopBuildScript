@@ -1,7 +1,15 @@
 cd ~/TigerIT/projects/communicator-desktop-pwa/
-npm i
+
+#npm install on condition
+if [ "$1" = "npm" ]; then
+    npm i
+
+fi
 cd electron/
-npm i
+if [ "$1" = "npm" ]; then
+    npm i
+fi
+
 git reset --hard
 git checkout dev
 git pull origin dev
