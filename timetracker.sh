@@ -2,11 +2,25 @@
 delay=0.2
 #get current time
 time=$(date "+%H:%M")
-taskTitle="* Checking $1"
-duration=$2
+
+#arguments passed
+activity="$1"
+taskTitle="$2"
+duration=$3
 
 
-#content=$(curl -L https://timetracker.tigeritbd.com/)
+#check number of argument
+if [ "$#" -eq 3 ]; then
+    taskTitle="* $activity on $2"
+elif [ "$#" -eq 2 ]; then
+    taskTitle="* Checking $1"
+    duration=$2
+fi
+
+
+
+
+
 
 #opening browser and visit timetracker
 xdg-open https://timetracker.tigeritbd.com/ 
@@ -71,7 +85,11 @@ xdotool key Tab
 sleep $delay 
 xdotool key Return
 sleep $delay 
-xdotool type "Testing"
+#conditional check on activity
+if [ "$#" -eq 2 ]; then xdotool type "Testing"; 
+elif [ "$#" -eq 3 ]; then xdotool type ${activity:0:3};
+fi
+
 sleep $delay 
 xdotool key Return
 
