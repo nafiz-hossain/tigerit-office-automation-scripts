@@ -1,5 +1,5 @@
 #variables
-delay=.1
+delay=.2
 #get current time
 time=$(date "+%H:%M")
 
