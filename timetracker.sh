@@ -1,5 +1,5 @@
 #variables
-delay=0.2
+delay=.1
 #get current time
 time=$(date "+%H:%M")
 
@@ -60,7 +60,10 @@ xdotool key Return
 
 
 #Input in CreateForm
+
 sleep $delay 
+xdotool type $duration
+sleep $delay
 xdotool key Tab 
 sleep $delay 
 xdotool key Return
@@ -103,17 +106,14 @@ sleep $delay
 
 
 #time
-xdotool mousemove 536 238 click 1
-sleep $delay
-xdotool key End BackSpace BackSpace BackSpace BackSpace BackSpace
-xdotool type $time
+xdotool mousemove 545 773 click 1 #save button
 sleep $delay
 xdotool key Tab Tab Tab Tab $duration Return
 
 
 #logout 
 sleep $delay
-xdotool mousemove 1864 158 click 1
+xdotool mousemove 1864 130 click 1 #profile icon
 sleep $delay
 xdotool key Tab Tab Tab Tab Return 
 xdotool key ctrl+w
