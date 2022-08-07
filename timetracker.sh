@@ -12,9 +12,22 @@ duration=$3
 #check number of argument
 if [ "$#" -eq 3 ]; then
     taskTitle="* $activity on $2"
+    echo "came to block A"
 elif [ "$#" -eq 2 ]; then
-    taskTitle="* Checking $1"
+    taskTitle="$1"
     duration=$2
+
+
+    echo "came to block B ${taskTitle:0:3}"
+
+    if [ ${taskTitle:0:3} == "Inv" ] || [ ${taskTitle:0:3} == "inv" ]; then
+    taskTitle="* $1"
+    elif [ ${taskTitle:0:3} == "Pre" ] || [ ${taskTitle:0:3} == "pre" ]; then
+    taskTitle="* $1"
+    else
+    taskTitle="* Checking the change of $1"
+    fi
+    echo "$taskTitle"
 fi
 
 
