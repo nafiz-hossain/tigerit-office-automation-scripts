@@ -23,4 +23,9 @@ sleep 1
 sort lastweektask.txt | uniq > tmp && mv tmp lastweektask.txt #sorts and removes duplicate line
 grep -v -i "merge\|conflicts\|package-lock.json\|1.2." lastweektask.txt > tmp && mv tmp lastweektask.txt #removes line containing a string
 grep -v '^[[:blank:]]*$' lastweektask.txt >lastweektask.txt.tmp && mv lastweektask.txt{.tmp,}  #removes empty line
-awk '{printf("%d. %s\n", NR, $0)}' lastweektask.txt > tmp && mv tmp lastweektask.txt #put numbers before every line
+awk '{printf("- %s\n", $0)}' lastweektask.txt > tmp && mv tmp lastweektask.txt #put numbers before every line
+
+sed -i 's/Fix/Bugfix:/g' lastweektask.txt #replace Fix with Bugfix:
+
+gedit lastweektask.txt
+
