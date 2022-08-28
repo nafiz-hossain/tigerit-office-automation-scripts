@@ -10,9 +10,24 @@ if [ "$1" = "npm" ]; then
     npm i
 fi
 
-git reset --hard
-git checkout dev
-git pull origin dev
+if [ "$#" -eq 1 ]; then
+    if [ "$1" = "stash" ]; then
+            git stash
+	    git checkout dev
+	    git pull origin dev
+	    git stash pop
+    else
+    git reset --hard
+    git pull origin dev
+    git checkout $1
+fi
+
+else
+    git reset --hard
+    git checkout dev
+    git pull origin dev
+
+fi
 
 sed -i 's/ios/iOOS/' /home/tigerit/TigerIT/projects/communicator-desktop-pwa/src/app/data-sync/data-sync.page.ts #replace a string with another string in file
 
