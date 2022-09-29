@@ -4,10 +4,33 @@ delay1=0
 #get current time
 time=$(date "+%H:%M")
 
+
+#Take title from asana
+#sleep $delay
+#xdotool key Super+Tab
+sleep 0.1
+xdotool key Ctrl+a
+sleep 0.1
+xdotool key Ctrl+c
+sleep $delay
+clipboard_content=`xclip -o -selection clipboard`
+echo "$clipboard_content"
+
+
+
+activity="Testing"
+duration="1"
+taskTitle="* Checking the change of $clipboard_content"
+
+
+
+
+
+
 #arguments passed
-activity="$1"
-taskTitle="$2"
-duration=$3
+#-- activity="$1"
+#-- taskTitle="$2"
+#-- duration=$3
 
 caps_lock_status=$(xset -q | sed -n 's/^.*Caps Lock:\s*\(\S*\).*$/\1/p')
 if [ $caps_lock_status == "on" ]; then
@@ -49,11 +72,7 @@ fi
 
 #opening browser and visit timetracker
 xdg-open https://timetracker.tigeritbd.com/index.php/en/login 
-sleep 1
-xdotool mousemove 524 789 click 1
-sleep $delay
-xdotool key Ctrl+r
-sleep $delay
+sleep 0.1
 
 
 
@@ -62,9 +81,10 @@ sleep $delay
 #xdotool key Alt_L+F10
 
 #Login
+xdotool mousemove 960 1060 click 1 #login
 sleep .8
 xdotool key Tab Tab Tab Tab Return
-sleep .8
+sleep .5
 xdotool key Return
 
 
@@ -105,10 +125,15 @@ xdotool key Tab
 sleep $delay1
 xdotool key Return
 sleep $delay1 
+
+
 #conditional check on activity
-if [ "$#" -eq 2 ]; then xdotool type "Testing"; 
-elif [ "$#" -eq 3 ]; then xdotool type ${activity:0:3};
-fi
+#-- if [ "$#" -eq 2 ]; then xdotool type "Testing"; 
+#-- elif [ "$#" -eq 3 ]; then xdotool type ${activity:0:3};
+#-- fi
+
+
+xdotool type "Testing";
 
 sleep $delay1 
 xdotool key Return
@@ -135,3 +160,4 @@ xdotool key Tab Tab Tab Tab $duration Return
 #xdotool key Tab Tab Tab Tab Return
 sleep $delay 
 xdotool key ctrl+w
+exit 0
