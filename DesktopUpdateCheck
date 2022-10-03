@@ -2,11 +2,11 @@
     "success": {
         "os": "linux",
         "version_name": "1.2.0",
-        "version_code": "1.2.0",
+        "version_code": "1.3.0",
         "build_type": "desktop",
         "store": "https://dl.commchat.com/releases/linux/latest/CommChat-1.2.9.snap",
         "is_store_link": false,
-        "minversion_code": "1.3.0",
+        "minversion_code": "1.2.0",
         "android_min_version": "2.2.0",
         "ios_min_version": "2.2.0",
         "db_version": 4,
