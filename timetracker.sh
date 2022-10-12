@@ -1,8 +1,15 @@
 #variables
-delay=.2
+delay=.25
 delay1=0
 #get current time
 time=$(date "+%H:%M")
+caps_lock_status=$(xset -q | sed -n 's/^.*Caps Lock:\s*\(\S*\).*$/\1/p')
+if [ $caps_lock_status == "on" ]; then
+  echo "Caps lock on, turning off"
+  xdotool key Caps_Lock
+else
+  echo "Caps lock already off"
+fi
 
 
 #Take title from asana
@@ -32,13 +39,6 @@ taskTitle="* Checking the change of $clipboard_content"
 #-- taskTitle="$2"
 #-- duration=$3
 
-caps_lock_status=$(xset -q | sed -n 's/^.*Caps Lock:\s*\(\S*\).*$/\1/p')
-if [ $caps_lock_status == "on" ]; then
-  echo "Caps lock on, turning off"
-  xdotool key Caps_Lock
-else
-  echo "Caps lock already off"
-fi
 
 
 
@@ -72,7 +72,7 @@ fi
 
 #opening browser and visit timetracker
 xdg-open https://timetracker.tigeritbd.com/index.php/en/login 
-sleep 0.1
+xdotool key ctrl+r
 
 
 
@@ -81,21 +81,12 @@ sleep 0.1
 #xdotool key Alt_L+F10
 
 #Login
-xdotool mousemove 960 1060 click 1 #login
 sleep .8
-xdotool key Tab Tab Tab Tab Return
-sleep .5
-xdotool key Return
-
+xdotool key Tab Tab Tab Tab Return			
 
 #creating a task
 sleep .8
-
-xdotool key Tab 
-xdotool key Tab 
-xdotool key Tab 
-xdotool key Return
-
+xdotool key Tab Tab Tab Return
 
 #Input in CreateForm
 sleep .5
@@ -148,7 +139,7 @@ sleep $delay1
 
 
 #time
-xdotool mousemove 546 1170 click 1 #save button
+xdotool key Tab Tab Tab Return
 sleep $delay
 xdotool key Tab Tab Tab Tab $duration Return
 
@@ -159,5 +150,5 @@ xdotool key Tab Tab Tab Tab $duration Return
 #sleep .3
 #xdotool key Tab Tab Tab Tab Return
 sleep $delay 
-xdotool key ctrl+w
+#xdotool key ctrl+w
 exit 0
