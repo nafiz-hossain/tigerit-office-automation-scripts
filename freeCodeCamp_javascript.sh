@@ -42,9 +42,7 @@ echo $solution
 
 
 sleep $delay
-xdotool key Alt+Tab
-sleep $delay
-xdotool key ctrl+shift+t
+xdotool key ctrl+Alt+t
 sleep $delay2
 xdotool type "cd /home/tigerit/TigerIT/projects/Coding/freeCodeCamp/JavaScript\ Algorithms\ and\ Data\ Structures/"
 xdotool key Return
