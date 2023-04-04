@@ -1,144 +1,144 @@
-#!/bin/bash
-mob="0"
-#saved the file at root, changed permission (chmod +x file.sh)
-	cd TigerIT/projects/communicator-desktop-pwa/ #directory
+#sudo killall commchat-agent
+cd ~/TigerIT/projects/communicator-desktop-pwa/
+echo "Enter inputs maintaining following sequence seperated by comma (,): "
+echo "AppName (commchat/agent), Branch Name, Environment (local/staging/prod), Update Npm (yes/no):, Git change (stash/reset), iOS user (yes/no): "
 
-	clear
-	read -p "branch name : " branch
-	#echo ""
-	read -p "environment  : loc/prod? " environment
-	#echo ""
-	read -p "version  : " version
-	#echo ""
-	read -p "Do you want to install npm  : y/n " isnpm
-	read -p "Mobile num? t-teletalk, g-gp, o-other  : " ismbl
-	echo ""
 
-	if [[ "$ismbl" == "t" ]]; then
-		mob="1521412351"	
-	elif [[ "$ismbl" == "g" ]]; then
-		mob=
-"1745937990"
-	elif [[ "$ismbl" == "o" ]]; then
-		read -p "Put number  : " mob
-	fi
-	echo ""
-	echo "number hocche $mob"
-	if [ $isnpm = y ]
-		then npm i
-	echo "npm i"
-	echo "<<<------------------------ npm updated -------------------------->>>"
-	echo ""
-	fi
-	d=$(date "+%d%b%H%M")
-	
-	#shortening branch name 
-	if [[ ${#branch} -gt 6 ]] ; then
-	    branchtemp="${branch:0:6}"
-	fi
+read text
 
-	Appversion="$version-$branchtemp$environment$d"
-	#Appversion="$version-$performanceJuly12$environment$d"  #for branch contains /
-	#d=$(date +%Y-%m-%d)
-        #echo " current date is $d"
+# Set comma as delimiter
+IFS=','
 
-	echo "setting up build for $branch branch, $Appversion version on $environment environment"
-	echo ""
+#Read the split words into an array based on comma delimiter
+read -a strarr <<< "$text"
 
-	#git
-	echo "<<<------------------------ -----git------ -------------------------->>>"
-	git fetch
-	git reset --hard
-	git checkout $branch
-	git pull
-	echo ""
-	echo "<<<------------------------ environment setup completed -------------------------->>>"
-	#setting up environment
-	#first you need to have to create two environment files named lenvironment.ts (local config) and penvironment.ts(prod config) and save at src/environments
-	cd src/environments
-	rm environment.ts
-	if [ $environment = loc ]
-		then cp lenvironment.ts environment.ts
-	elif [ $environment = prod ]
-		then cp penvironment.ts environment.ts
-	fi
-	cd ../../electron/
-	#edit package.json version with the input
-	sed -i '3d' package.json
-	sed -i '3i   "version": "'"$Appversion"'",' package.json
-	echo ""
-	echo "<<<------------------------ -----building the app------ -------------------------->>>"	
-	#build command for specific OS, here is for linux
-	#ionic cap sync electron
-	npm run electron:build-linux
-	cd dist/
-	sudo snap remove commchatbeta
-	sudo snap install --dangerous commchatbeta_${Appversion}_amd64.snap
-	#commchatbeta 
-	sleep 5
-	#registration automate --- local env ---
-	if [[ $environment = "loc" ]];
-		then 
-		sleep 1
-		sudo killall commchatbeta
-		sleep 1
-		xdotool key Super_L
-		sleep 1
-		xdotool type commchat
-		sleep 1
-		xdotool key Return
-		sleep 17
-		xdotool key Return
-		sleep 3
-		xdotool mousemove 630 273 click 1
-		xdotool type $mob
-		sleep .5
-		xdotool key Return
-		sleep .5
-		xdotool key Return
-		sleep 4
-		xdotool mousemove 537 302 click 1
-		sleep 2
-		xdotool type 223311
-		sleep 8
-		xdotool key Return
-		sleep 2
-		xdotool key Return
-		sleep 2
-		xdotool key Return
-		sleep 2
-		xdotool key Return
-	#registration automate --- Prod env ---
-	elif [[ $environment = "prod" ]]
-		then 
-		sleep 1
-		sudo killall commchatbeta
-		sleep 1
-		xdotool key Super_L
-		sleep 1
-		xdotool type commchat
-		sleep 1
-		xdotool key Return
-		sleep 17
-		xdotool key Return
-		sleep 3
-		xdotool mousemove 630 273 click 1
-		xdotool type $mob
-		sleep .5
-		xdotool key Return
-		sleep .5
-		xdotool key Return
-		sleep 4
-		xdotool mousemove 537 302 click 1
-		sleep 2
-		#xdotool type 223311
-		#sleep 8
-		#xdotool key Return
-		#sleep 2
-		#xdotool key Return
-		#sleep 2
-		#xdotool key Return
-		#sleep 2
-		#xdotool key Return
-	fi
+appName=${strarr[0]}
+branchName=${strarr[1]}
+environment=${strarr[2]}
+updateNpm=${strarr[3]}
+gitChange=${strarr[4]}
+iOSUser=${strarr[5]}
 
+
+#Print the splitted words
+echo "App Name : $appName"
+echo "Branch Name : $branchName"
+echo "Environment : $environment"
+echo "Update Npm (yes/no) : $updateNpm"
+echo "Git change (stash/reset) : $gitChange"
+echo "iOS user (yes/no) : $iOSUser"
+
+
+
+
+
+#npm install on condition
+if [ "$updateNpm" = "yes" ]; then
+    npm i
+
+fi
+cd electron/
+if [ "$updateNpm" = "yes" ]; then
+    npm i
+fi
+
+
+if [ "$gitChange" = "stash" ]; then
+            git stash
+            git fetch
+	    git checkout $branchName
+	    git pull origin $branchName
+	    git stash pop
+fi
+
+if [ "$gitChange" = "reset" ]; then
+    git reset --hard
+    git fetch
+    git checkout $branchName
+    git pull origin $branchName
+fi
+
+
+
+if [ "$iOSUser" = "yes" ]; then
+sed -i 's/ios/iOOS/' /home/tigerit/TigerIT/projects/communicator-desktop-pwa/src/app/data-sync/data-sync.page.ts #replace a string with another string in file
+fi
+
+
+cd ..
+
+
+
+
+if [ "$environment" = "local" ]; then
+ionic build
+fi
+if [ "$environment" = "staging" ]; then
+ionic build -c=staging
+fi
+if [ "$environment" = "prod" ]; then
+ionic build --prod
+fi
+
+
+
+
+
+npx cap sync @capacitor-community/electron
+cd electron/
+
+if [ "$appName" = "commchat" ]; then
+npm run electron:build-linux
+fi
+
+if [ "$appName" = "agent" ]; then
+npm run electron:build-linux-agent
+fi
+
+#Reading version from package.json
+while IFS= read -r line; do
+    #echo "Text read from file: $line"
+    var=""
+for word in $line
+do
+  if [ "$word" == '"version":' ]
+     then
+     last=${line##*:}
+          SUBSTRING=$(echo "$last" | cut -d'"' -f 2)
+          echo "###########################$SUBSTRING"
+    break
+  fi
+done
+done < package.json
+#End of Reading version from package.json
+
+cd dist/
+
+
+
+
+echo "###########################$SUBSTRING"
+
+if [ "$appName" = "commchat" ]; then
+sudo dpkg -i CommChatSetup_${SUBSTRING}.deb
+fi
+
+if [ "$appName" = "agent" ]; then
+sudo dpkg -i CommChatSetup-Agent_${SUBSTRING}.deb
+fi
+
+#commchat-agent
+sleep 0.2
+xdotool key Super_L
+sleep 1
+if [ "$appName" = "commchat" ]; then
+xdotool type "commchat"
+fi
+if [ "$appName" = "agent" ]; then
+xdotool type "commchat agent"
+fi
+sleep 0.2
+xdotool key Return
+exit 0
+
+#commchat,dev,local,no,reset,yes
