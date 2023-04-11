@@ -13,6 +13,7 @@ The repository includes the following Bash scripts:
 - reformatlastweektask.sh: A script that will reformat last week and remove redandunt info.
 - timetracker.sh: A script that will take current task info and put all the information into timetracker system at tigerit for running hour.
 - versionCheck.sh: A script that will check current branch app version number and returns for test purpose.
+- restartInput.sh: A script that will restart both display and mouspad driver for ubuntu 22.04.2
 
 ## Usage
 To use any of the scripts in this repository, simply download the script to your local machine and make it executable using the 'chmod' command. Then, execute the script using the terminal. Before executing any script, be sure to review the script code to ensure that it will perform the desired action.
