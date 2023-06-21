@@ -113,21 +113,34 @@ done < package.json
 #End of Reading version from package.json
 
 cd dist/
+echo "Removing builder-debug.yml"
+rm builder-debug.yml
+
+echo "Latest file name is $(ls -Art | tail -n 1)"
+sudo dpkg -i $(ls -Art | tail -n 1)
+
+
+echo "Killing commchat and agent app"
+sudo killall commchat
+sudo killall commchat-agent
 
 
 
 
-echo "###########################$SUBSTRING"
+#if [ "$appName" = "commchat" ]; then
+#sudo dpkg -i CommChatSetup_${SUBSTRING}.deb
+#fi
 
-if [ "$appName" = "commchat" ]; then
-sudo dpkg -i CommChatSetup_${SUBSTRING}.deb
-fi
+#if [ "$appName" = "agent" ]; then
+#sudo dpkg -i CommChatSetup-Agent_${SUBSTRING}.deb
+#fi
 
-if [ "$appName" = "agent" ]; then
-sudo dpkg -i CommChatSetup-Agent_${SUBSTRING}.deb
-fi
 
+#nautilus ~/TigerIT/projects/communicator-desktop-pwa/electron/dist
 #commchat-agent
+
+echo "Restarting desktop app"
+
 sleep 0.2
 xdotool key Super_L
 sleep 1
