@@ -7,7 +7,7 @@
         "store": "https://dl.commchat.com/releases/linux/latest/CommChatSetup_1.2.67.deb",
         "is_store_link": false,
         "minversion_code": "1.2.67",
-        "android_min_version": "2.3.12",
+        "android_min_version": "2.3.1",
         "ios_min_version": "2.2.85",
         "db_version": 1,
         "changelog": ""
