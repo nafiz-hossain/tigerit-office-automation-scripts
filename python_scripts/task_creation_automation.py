@@ -77,7 +77,26 @@ def append_tasks():
     time.sleep(0.1)
     pya.hotkey('shift', 'enter')
     time.sleep(0.1)
-    description = "- " + random_sentence() + ": - '" + pyperclip.paste() + "'"
+    # description = "- " + random_sentence() + ": - '" + pyperclip.paste() + "'"
+
+    # description = "- " + random_sentence() + ": - '" + pyperclip.paste() + "'"
+    # description = pyperclip.paste()
+    # Get text from the clipboard
+    text = pyperclip.paste()
+
+    # Split the text into lines
+    lines = text.split('\n')
+
+    # Add "- " before every line
+    lines_with_dash = ['- ' + line for line in lines]
+
+    # Join the lines back together with newline characters
+    modified_text = '\n'.join(lines_with_dash)
+
+    # Copy the modified text back to the clipboard
+    description = modified_text    
+
+
     pya.typewrite(description)
 
     time.sleep(0.3)
@@ -217,7 +236,25 @@ def createTask(driver):
 
         actions.send_keys(Keys.TAB)
         
-        description = "- " + random_sentence() + ": - '" + pyperclip.paste() + "'"
+        # description = "- " + random_sentence() + ": - '" + pyperclip.paste() + "'"
+        description = pyperclip.paste()
+        # Get text from the clipboard
+        text = pyperclip.paste()
+
+        # Split the text into lines
+        lines = text.split('\n')
+
+        # Add "- " before every line
+        lines_with_dash = ['- ' + line for line in lines]
+
+        # Join the lines back together with newline characters
+        modified_text = '\n'.join(lines_with_dash)
+
+        # Copy the modified text back to the clipboard
+        description = modified_text
+
+
+
         actions.send_keys(description)
         time.sleep(0.3)
         copy_all_clipboard()
