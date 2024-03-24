@@ -34,10 +34,25 @@ tigerit-office-automation-scripts/
 │   ├── README.md
 │   ├── restart_mouse_driver.sh
 │   └── text_search_simulation.sh
+├── javascript_scripts
+│   ├── conversationUpdateScript.js
+│   └── deleteConversationMessages.js
+├── nodejs_scripts
+│   ├── aes-decrypt.file.script.js
+│   ├── node_modules
+│   │   ├── crypto
+│   │   │   ├── package.json
+│   │   │   └── README.md
+│   │   └── fs
+│   │       ├── package.json
+│   │       └── README.md
+│   ├── package.json
+│   └── package-lock.json
 ├── python_scripts
 │   ├── find_duplicacy_over_payloads.py
 │   ├── get_commit_messages.py
 │   ├── openai_sentence_rephraser.py
+│   ├── prefix_filter.py
 │   ├── publish_bulk_message_to_mqtt.js
 │   ├── publish_bulk_message_to_mqtt.py
 │   ├── README.md
